@@ -1,0 +1,13 @@
+PYTHON VIRTUAL ASSISTANT
+
+Functions:
+-Led light control
+-Alarm clock
+-Weather info
+
+Hardware:
+-Speaker
+-Microphone
+-Raspberry Pi 4b
+
+Done:
