@@ -46,53 +46,22 @@ class getWeather:
         with open("weather.json") as json_file:
             hourCounter = 0
             currentRun = 0
-            '''currentDate = [None] * 5
-            currentHour = [None] * 5
-            currentTemperature = [None] * 5
-            currentFelt = [None] * 5
-            currentWeather = [None] * 5
-            currentWind = [None] * 5'''
             gettedData = []
             data = json.load(json_file)
             for p in data["list"]:
                 if((p["dt_txt"])[:10] == day and (p["dt_txt"])[11:] == hour[hourAccess[hourCounter]]):
                     currentObject = p
-                    
-                    #What day and hour is given
-                    #whichDate = (currentObject["dt_txt"])[:10]
-                    #whichHour = (currentObject["dt_txt"])[11:]
-                    #What temperature is, what weather and wind
-                    #Temperature
-                    temperature = currentObject["main"]["temp"]
-                    #temperature = round(int(temperature) - 273.15) 
-                    feltTemperature = currentObject["main"]["feels_like"]
-                    #feltTemperature = round(int(feltTemperature) - 273.15)
-                    #Weather
-                    #weatherDescription = currentObject["weather"][0]["description"]
-                    #Wind
-                    #wind = currentObject["wind"]["speed"]
-                    gettedData.append(currentObject["wind"]["speed"])
-                    gettedData.append(currentObject["weather"][0]["description"])
-                    gettedData.append(round(int(feltTemperature) - 273.15))
-                    gettedData.append(round(int(temperature) - 273.15))
-                    gettedData.append((currentObject["dt_txt"])[11:])
+
+                    #What day and hour are given
                     gettedData.append((currentObject["dt_txt"])[:10])
-                    '''currentDate[currentRun] = whichDate
-                    currentHour[currentRun] = whichHour
-                    currentTemperature[currentRun] = temperature
-                    currentFelt[currentRun] = feltTemperature
-                    currentWeather[currentRun] = weatherDescription
-                    currentWind[currentRun] = wind'''
+                    gettedData.append((currentObject["dt_txt"])[11:])
+                    #What temperature is it
+                    gettedData.append(round(int(currentObject["main"]["temp"]) - 273.15))
+                    gettedData.append(round(int(currentObject["main"]["feels_like"]) - 273.15))
+                    #Weather description
+                    gettedData.append(currentObject["weather"][0]["description"])
+                    gettedData.append(currentObject["wind"]["speed"])
+
                     hourCounter = hourCounter + 1
                     currentRun = currentRun + 1
-            '''gettedData = {
-                "date": currentDate,
-                "hour": currentHour,
-                "temperature": currentTemperature,
-                "felt": currentFelt,
-                "weather": currentWeather,
-                "wind": currentWind
-            }'''
             return gettedData
-x = getWeather(1)
-print(x.getInfo())

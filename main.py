@@ -1,3 +1,5 @@
+import weather
+
 def executeCommand(command):
     command = command.lower()
     #Time functions
@@ -6,8 +8,11 @@ def executeCommand(command):
         pass
     elif("set alarm" in command):
         print("Alarm set")
-    #Weather functions
+
     elif("weather" in command):
+        days = input("At what day you want weather?\n")
+        outside = weather.getWeather(days)
+        print(outside.getInfo())
         print("There is some shitty weather outside")
     #LED functions
     elif("led" in command):
