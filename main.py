@@ -1,12 +1,14 @@
 import weather
+import times
 
 def executeCommand(command):
     command = command.lower()
     #Time functions
     if("what time is it" in command):
-        print("Its some time now")
-        pass
+        times.tellTime()
     elif("set alarm" in command):
+        alarm = times.Alarm()
+        alarm.evokeAlarm()
         print("Alarm set")
 
     elif("weather" in command):
