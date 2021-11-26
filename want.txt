@@ -1,9 +1,10 @@
 PYTHON VIRTUAL ASSISTANT
 
 Functions:
+-Speech recognition
 -Led light control
--Alarm clock
--Weather info
+-Calendar
+-Music control
 
 Hardware:
 -Speaker
@@ -11,3 +12,5 @@ Hardware:
 -Raspberry Pi 4b
 
 Done:
+-Weather info
+-Alarm clock
