@@ -55,9 +55,11 @@ class getWeather:
                     #What day and hour are given
                     gettedData.append((currentObject["dt_txt"])[:10])
                     gettedData.append((currentObject["dt_txt"])[11:])
+
                     #What temperature is it
                     gettedData.append(round(int(currentObject["main"]["temp"]) - 273.15))
                     gettedData.append(round(int(currentObject["main"]["feels_like"]) - 273.15))
+                    
                     #Weather description
                     gettedData.append(currentObject["weather"][0]["description"])
                     gettedData.append(currentObject["wind"]["speed"])
