@@ -6,6 +6,10 @@ Functions:
 -Calendar
 -Music control
 
+Other functions:
+-Run on start of server
+
+
 Hardware:
 -Speaker
 -Microphone
