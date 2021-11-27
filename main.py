@@ -1,33 +1,34 @@
-import weather
-import times
+import commands
 
 def executeCommand(command):
     command = command.lower()
+    toExecute = commands.command()
+
     #Time functions
     if("what time is it" in command):
-        times.tellTime()
-    elif("set alarm" in command):
-        alarm = times.Alarm()
-        alarm.evokeAlarm()
-        print("Alarm set")
+        toExecute.timeTell()
 
+    elif("set alarm" in command):
+        toExecute.alarm()
+
+    #Weather function
     elif("weather" in command):
-        days = input("At what day you want weather?\n")
-        outside = weather.getWeather(days)
-        print(outside.getInfo())
-        print("There is some shitty weather outside")
-    #LED functions
+        toExecute.tellWeather()
+
+    #Led function
     elif("led" in command):
         print("LED's")
 
 
 
 def listenCommand():
+    #Listens to command
     command = input("Tell me what i need to do:\n")
     executeCommand(command)
 
 
 def awaitCommand():
+    #Waits for "manfred" word in string
     awake = input("What do you want?\n")
     awake = awake.lower()
     if("manfred" in awake):
