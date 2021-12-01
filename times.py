@@ -1,6 +1,5 @@
 import datetime
 from playsound import playsound
-import time
 import os
 import sys
 from time import sleep
