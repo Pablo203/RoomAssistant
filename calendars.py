@@ -1,6 +1,5 @@
 import pymysql
 import datetime
-import os
 
 class calendar:
     def __init__(self):
@@ -52,7 +51,7 @@ class calendar:
                     print(self.description[counter][0])
             counter += 1      
     
-    def deleteEvent(self):
+    def deleteEvents(self):
         date = datetime.datetime.now()
         date = date - datetime.timedelta(days = 7)
         date = str(date)[:11]
