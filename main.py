@@ -13,26 +13,25 @@ def executeCommand(command):
     toExecute = commands.command()
 
     #Time functions
-    if("what time is it" in command):
+    if("która jest godzina" in command):
         toExecute.timeTell()
 
-    elif("set alarm" in command):
+    elif("ustaw alarm" in command):
         toExecute.alarm()
 
     #Weather function
-    elif("weather" in command):
+    elif("pogoda" in command):
         toExecute.tellWeather()
 
     #Add event to calendar
-    elif("Note in calendar" in command):
+    elif("zapisz w kalendarzu" in command):
         toExecute.addEvents()
     #Check Events in calendar
-    elif("Check in calendar" in command):
+    elif("sprawdź w kalendarzu" in command):
         toExecute.checkEvents()
     #Play song
-    elif("play song" in command):
+    elif("puść piosenkę" in command):
         toExecute.playSong()
-
     #Led function
     elif("led" in command):
         print("LED's")
@@ -55,10 +54,10 @@ def awaitCommand():
     with mic as source:
         audio = r.listen(source)
         try:
-            recognized = r.recognize_google(audio)
+            recognized = r.recognize_google(audio, language='pl-PL')
             recognized = recognized.lower()
             print(recognized)
-            if("jarvis" in recognized):
+            if("manfred" in recognized):
                 listenCommand()
         except(sr.RequestError, sr.UnknownValueError):
             pass
