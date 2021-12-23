@@ -10,9 +10,12 @@ class Recognize:
         with self.mic as source:
             audio = self.r.listen(source)
             try:
-                recognized = self.r.recognize_google(audio)
+                recognized = self.r.recognize_google(audio, language='pl-PL')
                 recognized = recognized.lower()
                 return recognized
             except(sr.RequestError, sr.UnknownValueError):
                 talk.tellSentence("Nie zrozumiałem")
                 return ""
+
+#x = Recognize()
+#print(x.recognize())
