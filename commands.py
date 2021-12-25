@@ -2,6 +2,11 @@ import weather
 import times
 import calendars
 import music
+import talk
+import speech
+import fun
+
+#Class to control all functions of programm
 class command:
     def __init__(self):
         pass
@@ -9,32 +14,71 @@ class command:
     def alarm(self):
         setTime = times.Alarm()
         setTime.evokeAlarm()
-        print("Alarm set")
 
     def timeTell(self):
         times.tellTime()
 
     def tellWeather(self):
-        days = input("At what day you want weather?\n")
-        outside = weather.getWeather(days)
-        print(outside.getInfo())
+        outside = weather.getWeather()
+        outside.displayInfo()
 
     def addEvents(self):
-        year = input("At what year: ")
-        month = input("At what month: ")
-        day = input("At what day: ")
+        recognition = speech.Recognize()
+        #Get year, month and day from user
+        talk.tellSentence("Na który rok?")
+        year = recognition.recognize()
+        talk.tellSentence("Na który miesiąc")
+        month = recognition.recognize()
+        talk.tellSentence("Na który dzień")
+        day = recognition.recognize()
+        #Try to cast getted data into int, else stop function
+        try:
+            year = int(year)
+        except ValueError:
+            talk.tellSentence("Nie zrozumiałem roku")
+            return False
+        try:
+            if(month == "jeden"):
+                month = 1
+            else:
+                month = int(month)                    
+        except ValueError:
+            talk.tellSentence("Nie zrozumiałem miesiąca")
+            return False
+        try:
+            if(day == "jeden"):
+                day = 1
+            else:
+                day = int(day)
+        except ValueError:
+            talk.tellSentence("Nie zrozumiałem dnia")
+            return False
+        
+        #Check if month or days is out of scale
         if(int(month) <= 12):
             if(int(day) <= 31):
-                date = year + "-" + month + "-" + day
+                date = str(year) + "-" + str(month) + "-" + str(day)
                 print(date)
-                description = input("Please describe it: ")
-                daysbefore = input("How many days before inform you? ")
+                #Gets description of event and how many days before inform user
+                talk.tellSentence("Proszę opisz to wydarzenie")
+                description = recognition.recognize()
+                talk.tellSentence("Ile dni wcześniej Cię poinformować?")
+                daysbefore = recognition.recognize()
+                print(daysbefore)
+                #If days before is impossible to cast into int stop function
+                try:
+                    daysbefore = int(daysbefore)
+                except ValueError:
+                    talk.tellSentence("Coś poszło nie tak")
+                    return
+                #If everything went well add event to calendar
                 calendarModule = calendars.calendar()
                 calendarModule.addEvent(date, description, daysbefore)
+                talk.tellSentence("Dodałem wydarzenie do kalendarza")
             else:
-                print("Give a valid day")
+                talk.tellSentence("Give a valid day")
         else:
-            print("Give a valid month")
+            talk.tellSentence("Give a valid month")
 
     def checkEvents(self):
         calendarModule = calendars.calendar()
@@ -44,6 +88,10 @@ class command:
         calendarModule = calendars.calendar()
         calendarModule.deleteEvents()
 
+    def redAlert(self):
+        fun.redAlert()
+
+    #To finish to controll with voice
     def playSong(self):
         songPlay = music.useSpotify()
         songPlay.use()

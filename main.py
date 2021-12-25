@@ -1,9 +1,9 @@
+from pyaudio import paInt8
 import commands
 import os
 import speech
 import talk
 import speech_recognition as sr
-
 
 #os.system("sudo /opt/lampp/.xampp start")
 
@@ -16,6 +16,7 @@ def executeCommand(command):
     if("która jest godzina" in command):
         toExecute.timeTell()
 
+    #Set alarm
     elif("ustaw alarm" in command):
         toExecute.alarm()
 
@@ -26,15 +27,21 @@ def executeCommand(command):
     #Add event to calendar
     elif("zapisz w kalendarzu" in command):
         toExecute.addEvents()
+
     #Check Events in calendar
     elif("sprawdź w kalendarzu" in command):
         toExecute.checkEvents()
+        
     #Play song
     elif("puść piosenkę" in command):
         toExecute.playSong()
+        
     #Led function
     elif("led" in command):
         print("LED's")
+    
+    elif("czerwony alert" in command):
+        toExecute.redAlert()
 
 
 
@@ -44,6 +51,7 @@ def listenCommand():
     talk.tellSentence("Słucham")
 
     recognized = recognition.recognize()
+    print(recognized)
     executeCommand(recognized)
 
         
@@ -51,6 +59,7 @@ def awaitCommand():
     #Waits for "manfred" word in string
     r = sr.Recognizer()
     mic = sr.Microphone()
+    #mic.SAMPLE_WIDTH = paInt8
     with mic as source:
         audio = r.listen(source)
         try:
