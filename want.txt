@@ -1,13 +1,15 @@
 PYTHON VIRTUAL ASSISTANT
 
 Functions:
--Speech recognition
--Led light control
--Calendar
--Music control
+-Made responses more logical
+-Led light control MEDIUM Pico required
+-Sending emails MEDIUM
+-Quick math? MEDIUM
+-Human interactions HARD
+
 
 Other functions:
--Run on start of server
+-Run on start of server (Crontab, init.d)
 
 
 Hardware:
@@ -16,5 +18,22 @@ Hardware:
 -Raspberry Pi 4b
 
 Done:
--Weather info
--Alarm clock
+-Music control
+-Calendar
+-Weather info 
+-Alarm clock 
+-Change prints into os.system("espeak") EASY but to modify
+-Change os.system("say") to talk.tellSentence()
+-Speech recognition HARD
+
+Files:
+Listen for user interaction - main.py
+Commands main - commands.py
+
+Music - music.py
+Calendar - calendars.py
+Weather - weather.py
+Alarm clock - times.py
+
+Talking to user - talk.py
+Speech recognition - speech.py
