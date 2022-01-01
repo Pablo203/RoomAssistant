@@ -5,8 +5,8 @@ class calendar:
     def __init__(self):
         self.mydb = pymysql.connect(
             host = 'localhost',
-            user = 'root',
-            password = '',
+            user = 'manfred',
+            password = 'manfred',
             database = 'Calendar'
         )
     
