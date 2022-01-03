@@ -12,10 +12,10 @@ from selenium.webdriver.common.keys import Keys
 
 class useSpotify:
     def __init__(self):
-        self.username = '31cvpctvdtoh57kzurnv3emafqja'
-        self.clientId = '9dad35d7cc144001b472518b9ac6d738'
-        self.clientSecret = '95bf4812e4af41d695850121273c9344'
-        self.redirectURI = 'https://google.com/'
+        self.username = 'SPOTIFY_API_USERNAME'
+        self.clientId = 'SPOTIFY_CLIENT_ID'
+        self.clientSecret = 'SPOTIFY_SECRET_CLIENT_ID'
+        self.redirectURI = 'SPOTIFY_REDIRECT_URI'
 
     def getToken(self):
         # Create OAuth Object
