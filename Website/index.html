@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manfred</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <div class="pop-up-area" id="pop-up-window-calendar">
+        <button class="close-btn-box" onclick="hideWindow('calendar')">
+            <div class="close-btn-border-left"></div>
+
+            <div class="close-btn-border-top-left"></div>
+            <div class="close-btn-border-top-connector"></div>
+            <div class="close-btn-border-top-right"></div>
+
+                <div class="close-btn-sign-area">
+                    <div class="close-btn-sign-first"></div>
+                    <div class="close-btn-sign-second"></div>
+                </div>
+
+            <div class="close-btn-border-bottom-left"></div>
+            <div class="close-btn-border-bottom-connector"></div>
+            <div class="close-btn-border-bottom-right"></div>
+
+            <div class="close-btn-border-right"></div>
+        </button>
+
+        <div class="content-area-box">
+            <div class="title-area">
+                <p class="pop-up-title">
+                    Calendar
+                </p>
+                <hr class="pop-up-divider">
+            </div>
+        </div>
+    </div>
+
+    <div class="pop-up-area" id="pop-up-window-music">
+        <button class="close-btn-box" onclick="hideWindow('music')">
+            <div class="close-btn-border-left"></div>
+
+            <div class="close-btn-border-top-left"></div>
+            <div class="close-btn-border-top-connector"></div>
+            <div class="close-btn-border-top-right"></div>
+
+                <div class="close-btn-sign-area">
+                    <div class="close-btn-sign-first"></div>
+                    <div class="close-btn-sign-second"></div>
+                </div>
+
+            <div class="close-btn-border-bottom-left"></div>
+            <div class="close-btn-border-bottom-connector"></div>
+            <div class="close-btn-border-bottom-right"></div>
+
+            <div class="close-btn-border-right"></div>
+        </button>
+    </div>
+
+    <div class="pop-up-area" id="pop-up-window-alarms">
+        <button class="close-btn-box" onclick="hideWindow('alarms')">
+            <div class="close-btn-border-left"></div>
+
+            <div class="close-btn-border-top-left"></div>
+            <div class="close-btn-border-top-connector"></div>
+            <div class="close-btn-border-top-right"></div>
+
+                <div class="close-btn-sign-area">
+                    <div class="close-btn-sign-first"></div>
+                    <div class="close-btn-sign-second"></div>
+                </div>
+
+            <div class="close-btn-border-bottom-left"></div>
+            <div class="close-btn-border-bottom-connector"></div>
+            <div class="close-btn-border-bottom-right"></div>
+
+            <div class="close-btn-border-right"></div>
+        </button>
+    </div>
+
+    <div class="pop-up-area" id="pop-up-window-weather">
+        <button class="close-btn-box" onclick="hideWindow('weather')">
+            <div class="close-btn-border-left"></div>
+
+            <div class="close-btn-border-top-left"></div>
+            <div class="close-btn-border-top-connector"></div>
+            <div class="close-btn-border-top-right"></div>
+
+                <div class="close-btn-sign-area">
+                    <div class="close-btn-sign-first"></div>
+                    <div class="close-btn-sign-second"></div>
+                </div>
+
+            <div class="close-btn-border-bottom-left"></div>
+            <div class="close-btn-border-bottom-connector"></div>
+            <div class="close-btn-border-bottom-right"></div>
+
+            <div class="close-btn-border-right"></div>
+        </button>
+    </div>
+
+
+    <div class="buttons-area-top">
+        <button class="action-btn" style="margin-left: 7.5%;" onclick="showWindow('calendar')">
+            <div class="btn-border-left"></div>    
+            <div class="btn-border-top-left"></div>
+            <div class="btn-border-top-connector"></div>
+            <div class="btn-border-top-right"></div>
+                <p class="btn-text">
+                    Calendar
+                </p>
+            <div class="btn-border-bottom-left"></div>
+            <div class="btn-border-bottom-connector"></div>
+            <div class="btn-border-bottom-right"></div>
+            <div class="btn-border-right"></div>
+        </button>
+
+        <button class="action-btn" style="margin-left: 12.5%;" onclick="showWindow('music')">
+            <div class="btn-border-left"></div>    
+            <div class="btn-border-top-left"></div>
+            <div class="btn-border-top-connector"></div>
+            <div class="btn-border-top-right"></div>
+                <p class="btn-text">
+                    Music
+                </p>
+                <div class="btn-border-bottom-left"></div>
+                <div class="btn-border-bottom-connector"></div>
+                <div class="btn-border-bottom-right"></div>
+            <div class="btn-border-right"></div>
+        </button>
+    </div>
+
+    <div class="manfred-visualisation">
+        <div class="center-ball"></div>
+        <div class="first-ring"></div>
+        <div class="second-ring"></div>
+        <div class="third-ring"></div>
+        <div class="fourth-ring"></div>
+    </div>
+
+    <div class="buttons-area-bottom">
+        <button class="action-btn" style="margin-left: 15%;" onclick="showWindow('alarms')">
+            <div class="btn-border-left"></div>    
+            <div class="btn-border-top-left"></div>
+            <div class="btn-border-top-connector"></div>
+            <div class="btn-border-top-right"></div>
+                <p class="btn-text">
+                    Alarms
+                </p>
+                <div class="btn-border-bottom-left"></div>
+                <div class="btn-border-bottom-connector"></div>
+                <div class="btn-border-bottom-right"></div>
+            <div class="btn-border-right"></div>
+        </button>
+
+        <button class="action-btn" style="margin-left: 25%;" onclick="showWindow('weather')">
+            <div class="btn-border-left"></div>    
+            <div class="btn-border-top-left"></div>
+            <div class="btn-border-top-connector"></div>
+            <div class="btn-border-top-right"></div>
+                <p class="btn-text">
+                    Weather
+                </p>
+                <div class="btn-border-bottom-left"></div>
+                <div class="btn-border-bottom-connector"></div>
+                <div class="btn-border-bottom-right"></div>
+            <div class="btn-border-right"></div>
+        </button>
+    </div>
+<script src="js/script.js"></script>
+</body>
+</html>
