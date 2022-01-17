@@ -3,7 +3,7 @@ import webbrowser
 import os
 import speech
 import talk
-
+import json
 
 import selenium
 from selenium import webdriver
@@ -12,11 +12,12 @@ from selenium.webdriver.common.keys import Keys
 
 class useSpotify:
     def __init__(self):
-        self.username = 'SPOTIFY_API_USERNAME'
-        self.clientId = 'SPOTIFY_CLIENT_ID'
-        self.clientSecret = 'SPOTIFY_SECRET_CLIENT_ID'
-        self.redirectURI = 'SPOTIFY_REDIRECT_URI'
-
+        with open("config.json", "r") as configFile:
+            data = json.load(configFile)
+            self.username = data["musicCredentials"]["username"]
+            self.clientId = data["musicCredentials"]["clientID"]
+            self.clientSecret = data["musicCredentials"]["clientSecretID"]
+            self.redirectURI = data["musicCredentials"]["redirectURI"]
     def getToken(self):
         # Create OAuth Object
         oauth_object = spotipy.SpotifyOAuth(self.clientId, self.clientSecret, self.redirectURI)

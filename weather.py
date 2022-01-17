@@ -3,26 +3,28 @@ import datetime
 import json
 import talk
 
-class getWeather:
+class GetWeather:
     def __init__(self):
         self.days = 1
         self.date = ""
     def getJSONFile(self):
         #writes values returned by API into JSON file
-        url = "https://community-open-weather-map.p.rapidapi.com/forecast"
+        with open("config.json", "r") as configFile:
+            data = json.load(configFile)
+            url = data["weather"]["url"]
 
-        querystring = {"q":"rybnik,pl"}
+            querystring = {"q":data["weather"]["city"]}
 
-        headers = {
-            'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
-            'x-rapidapi-key': "eb93f8fd3emsh381900d05a32aecp165355jsnb75ede5ea3c9"
-        }
+            headers = {
+                'x-rapidapi-host': data["weather"]["rapid-api-host"],
+                'x-rapidapi-key': data["weather"]["rapid-api-key"]
+            }
 
-        response = requests.request("GET", url, headers=headers, params=querystring)
-        #Opens a file or creates if file doesn't exist, writes values to it and closes it
-        saveFile = open("weather.json", "w")
-        saveFile.write(response.text)
-        saveFile.close()
+            response = requests.request("GET", url, headers=headers, params=querystring)
+            #Opens a file or creates if file doesn't exist, writes values to it and closes it
+            saveFile = open("weather.json", "w")
+            saveFile.write(response.text)
+            saveFile.close()
 
     def getWantedDay(self):
         #Gets wanted date which is few days ahead to compare with dates in JSON

@@ -1,14 +1,23 @@
 import pymysql
 import datetime
+import json
+import os
+import sys
+from time import sleep
 
-class calendar:
+
+class Calendar:
     def __init__(self):
-        self.mydb = pymysql.connect(
-            host = 'localhost',
-            user = 'manfred',
-            password = 'manfred',
-            database = 'Calendar'
-        )
+        with open("config.json", "r") as configFile:
+            data = json.load(configFile)
+            self.hourToTellEvent = data["calendar"]["hourToTellEvents"]
+            self.afterHowManyDaysDelete = data["calendar"]["afterHowManyDaysDeleteEvent"]
+            self.mydb = pymysql.connect(
+                host = data["database"]["host"],
+                user = data["database"]["user"],
+                password = data["database"]["password"],
+                database = data["database"]["databaseName"]
+            )
     
 
     def addEvent(self, date, description, daysBefore):
@@ -53,10 +62,29 @@ class calendar:
     
     def deleteEvents(self):
         date = datetime.datetime.now()
-        date = date - datetime.timedelta(days = 7)
+        date = date - datetime.timedelta(days = self.afterHowManyDaysDelete)
         date = str(date)[:11]
         print(date)
         mycursor = self.mydb.cursor()
         query = ("DELETE FROM Events WHERE EventDate = %s")
         mycursor.execute(query, (date))
         self.mydb.commit()
+
+    def evokeSelectDelete(self):
+        timenow = datetime.datetime.now().strftime('%H:%M')
+        deadline = self.hourToTellEvent
+        start = datetime.datetime.strptime(timenow,'%H:%M')
+        ends = datetime.datetime.strptime(deadline, '%H:%M')
+        result = ends-start
+        pid = os.fork()
+        if pid == 0:
+            print("Running task")
+            sleep(result.seconds)
+            self.displayEvents()
+            self.deleteEvents()
+            self.evokeSelectDelete()
+            print("Task ended")
+            
+            sys.exit()
+        else:
+            print("Running another task")
