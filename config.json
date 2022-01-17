@@ -1,0 +1,28 @@
+{
+    "database" : {
+        "host" : "",
+        "user" : "",
+        "password" : "",
+        "databaseName" : ""
+    },
+    "calendar" : {
+        "hourToTellEvents" : "HH:MM",
+        "afterHowManyDaysDeleteEvent" : 7
+    },
+    "musicCredentials": {
+        "username" : "SPOTIFY USERNAME",
+        "clientID" : "SPOTIFY CLIENT ID",
+        "clientSecretID" : "SPOTIFY CLIENT SECRET ID",
+        "redirectURI" : "REDIRECT URI"
+    },
+    "weather" : {
+        "url" : "RAPID API LINK",
+        "city" : "city, country",
+        "rapid-api-host" : "RAPID API HOST",
+        "rapid-api-key" : "RAPID API KEY"
+    },
+    "language" : {
+        "response" : "pl",
+        "speech" : "pl-PL"
+    }
+}
