@@ -3,8 +3,11 @@ import os
 import speech
 import talk
 import speech_recognition as sr
+import calendars
 
-#os.system("sudo /opt/lampp/./xampp start")
+os.system("sudo /opt/lampp/./xampp start")
+setup = calendars.Calendar()
+setup.evokeSelectDelete()
 
 
 def executeCommand(command):
@@ -32,8 +35,8 @@ def executeCommand(command):
         toExecute.checkEvents()
         
     #Play song
-    #elif("puść piosenkę" in command):
-        #toExecute.playSong()
+    elif("puść piosenkę" in command):
+        toExecute.playSong()
         
     #Led function
     elif("led" in command):
@@ -41,6 +44,11 @@ def executeCommand(command):
     
     elif("czerwony alert" in command):
         toExecute.redAlert()
+
+    #Human interactions functions
+    #elif("jesteś uroczy" or "jesteś słodki" or "jesteś kochany" in command):
+        #toExecute.complimentResponse()
+
 
 
 
