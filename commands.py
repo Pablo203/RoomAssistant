@@ -5,6 +5,7 @@ import music
 import talk
 import speech
 import fun
+import interaction
 
 #Class to control all functions of programm
 class command:
@@ -19,7 +20,7 @@ class command:
         times.tellTime()
 
     def tellWeather(self):
-        outside = weather.getWeather()
+        outside = weather.GetWeather()
         outside.displayInfo()
 
     def addEvents(self):
@@ -72,7 +73,7 @@ class command:
                     talk.tellSentence("Coś poszło nie tak")
                     return
                 #If everything went well add event to calendar
-                calendarModule = calendars.calendar()
+                calendarModule = calendars.Calendar()
                 calendarModule.addEvent(date, description, daysbefore)
                 talk.tellSentence("Dodałem wydarzenie do kalendarza")
             else:
@@ -81,11 +82,11 @@ class command:
             talk.tellSentence("Give a valid month")
 
     def checkEvents(self):
-        calendarModule = calendars.calendar()
+        calendarModule = calendars.Calendar()
         calendarModule.displayEvents()
 
     def deleteEvents(self):
-        calendarModule = calendars.calendar()
+        calendarModule = calendars.Calendar()
         calendarModule.deleteEvents()
 
     def redAlert(self):
@@ -95,3 +96,7 @@ class command:
     def playSong(self):
         songPlay = music.useSpotify()
         songPlay.use()
+
+    def complimentResponse():
+        wayToInteract = interaction.Interactions()
+        wayToInteract.lookComplimentResponse()
