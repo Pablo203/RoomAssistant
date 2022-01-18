@@ -45,6 +45,12 @@ def executeCommand(command):
     elif("czerwony alert" in command):
         toExecute.redAlert()
 
+    elif("Podaj mi informacje" in command):
+        toExecute.getInfo()
+
+    elif("Opowiedz mi żart" in command):
+        toExecute.tellSomeJoke()
+
     #Human interactions functions
     #elif("jesteś uroczy" or "jesteś słodki" or "jesteś kochany" in command):
         #toExecute.complimentResponse()

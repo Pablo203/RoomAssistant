@@ -97,6 +97,12 @@ class command:
         songPlay = music.useSpotify()
         songPlay.use()
 
-    def complimentResponse():
-        wayToInteract = interaction.Interactions()
-        wayToInteract.lookComplimentResponse()
+    #Get wikipedia info
+    def getInfo(self):
+        recognition = speech.Recognize()
+        talk.tellSentence("O jakim temacie chcesz usłyszeć?")
+        recognized = recognition.recognize()
+        fun.getWikipediaInfo(recognized)
+
+    def tellSomeJoke(self):
+        fun.tellJoke()
