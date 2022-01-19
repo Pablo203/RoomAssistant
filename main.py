@@ -74,7 +74,7 @@ def awaitCommand():
     r = sr.Recognizer()
     mic = sr.Microphone()
     with mic as source:
-        audio = r.listen(source)
+        audio = r.listen(source, phrase_time_limit=2)
         try:
             recognized = r.recognize_google(audio, language='pl-PL')
             recognized = recognized.lower()
