@@ -6,9 +6,12 @@ There will be:
 -Virtual Assistant with website connected to it
 -Virtual Assistant with robot schematics
 
+
 **Before download**
 -Python3
 -PhpMyAdmin
+
+
  **After download**
  -Run setup.sh
  -Fill config.json
