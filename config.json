@@ -9,12 +9,6 @@
         "hourToTellEvents" : "HH:MM",
         "afterHowManyDaysDeleteEvent" : 7
     },
-    "musicCredentials": {
-        "username" : "SPOTIFY USERNAME",
-        "clientID" : "SPOTIFY CLIENT ID",
-        "clientSecretID" : "SPOTIFY CLIENT SECRET ID",
-        "redirectURI" : "REDIRECT URI"
-    },
     "weather" : {
         "url" : "RAPID API LINK",
         "city" : "city, country",
