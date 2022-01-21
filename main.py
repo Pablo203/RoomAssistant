@@ -34,14 +34,6 @@ def executeCommand(command):
     elif("sprawdź w kalendarzu" in command):
         toExecute.checkEvents()
         
-    #Play song
-    elif("puść piosenkę" in command):
-        toExecute.playSong()
-        
-    #Led function
-    elif("led" in command):
-        print("LED's")
-    
     elif("czerwony alert" in command):
         toExecute.redAlert()
 

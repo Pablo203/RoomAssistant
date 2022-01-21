@@ -1,7 +1,6 @@
 import weather
 import times
 import calendars
-import music
 import talk
 import speech
 import fun
@@ -91,11 +90,6 @@ class command:
 
     def redAlert(self):
         fun.redAlert()
-
-    #To finish to controll with voice
-    def playSong(self):
-        songPlay = music.useSpotify()
-        songPlay.use()
 
     #Get wikipedia info
     def getInfo(self):
