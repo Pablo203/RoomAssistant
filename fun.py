@@ -28,5 +28,3 @@ def getWikipediaInfo(subject):
         talk.tellSentence("Nie znalazłem żadnych informacji")
     else:
         talk.tellSentence(page_py.summary)
-
-tellJoke()
