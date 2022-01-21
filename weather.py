@@ -78,7 +78,38 @@ class GetWeather:
                     currentRun = currentRun + 1
             #Return array with all data
             return gettedData
-        
+    
+    def determineTemperatureName(self, temperatureNumber):
+        temperatureIndicator = abs(int(temperatureNumber))
+        temperature = ["stopni", "stopień", "stopnie", "stopnie", "stopnie", "stopni"]
+
+        if(temperatureIndicator == 0):
+            temperatureName = temperature[temperatureIndicator]
+        elif(temperatureIndicator == 1):
+            temperatureName = temperature[temperatureIndicator]
+        elif(temperatureIndicator == 2 or temperatureIndicator == 3 or temperatureIndicator == 4):
+            temperatureName = temperature[temperatureIndicator]
+        elif(temperatureIndicator >= 5):
+            temperatureName = temperature[5]
+
+        return temperatureName
+            
+    def determineHour(self, date):
+        hour = date[0:2]
+        if(hour == "06"):
+            return "szóstej"
+        elif(hour == "09"):
+            return "dziewiątej"
+        elif(hour == "12"):
+            return "dwunastej"
+        elif(hour == "15"):
+            return "piętnastej"
+        elif(hour == "18"):
+            return "osiemnastej"
+        elif(hour == "21"):
+            return "dwudziestej pierwszej"
+
+
     def displayInfo(self):
         data = self.getInfo()
         print(data)
@@ -95,13 +126,18 @@ class GetWeather:
                 else:
                     if(j == 1):
                         print(data[(i*6) + j])
-                        talk.tellSentence("O godzinie " + data[(i*6) + j])
+                        hour = self.determineHour(data[(i*6) + j])
+                        talk.tellSentence(f"O godzinie {hour}")
                     elif(j == 2):
-                        print(data[(i*6) + j])
-                        talk.tellSentence(f"Temperatura będzie wynosić {data[(i*6) + j]} stopni")
+                        temp = data[(i*6) + j]
+                        temperatureName = self.determineTemperatureName(temp)
+                        print(temp)
+                        talk.tellSentence(f"Temperatura będzie wynosić {data[(i*6) + j]} {temperatureName}")
                     elif(j == 3):
+                        temp = data[(i*6) + j]
+                        temperatureName = self.determineTemperatureName(temp)
                         print(data[(i*6) + j])
-                        talk.tellSentence(f"Temperatura odczuwalna będzie wynosić {data[(i*6) + j]} stopni")
+                        talk.tellSentence(f"Temperatura odczuwalna będzie wynosić {data[(i*6) + j]} {temperatureName}")
                     elif(j == 4):
                         print(data[(i*6) + j])
                     elif(j == 5):
