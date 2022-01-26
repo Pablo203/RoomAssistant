@@ -2,14 +2,17 @@ import requests
 import datetime
 import json
 import talk
+import speech
 
 class GetWeather:
     def __init__(self):
         self.days = 1
         self.date = ""
+
     def getJSONFile(self):
-        #writes values returned by API into JSON file
+        #Gets data from Weather API and saves it in JSON file
         with open("config.json", "r") as configFile:
+            #Gets info about url, city, and API credentials from config file
             data = json.load(configFile)
             url = data["weather"]["url"]
 
@@ -27,6 +30,19 @@ class GetWeather:
             saveFile.close()
 
     def getWantedDay(self):
+        #Ask user at what day it want weather
+        recognizes = speech.Recognize()
+        talk.tellSentence("Na za ile dni chcesz pogodę?")
+        recognized = recognizes.recognize()
+        #Try to cast gotten string into number
+        if("jeden" in recognized):
+            self.days = 1
+        else:
+            try:
+                self.days = int(recognized)
+            except ValueError:
+                talk.tellSentence("Nie zrozumiałem dnia")
+                return ""
         #Gets wanted date which is few days ahead to compare with dates in JSON
         currentDate = datetime.datetime.now()
         self.days = int(self.days)
@@ -51,17 +67,20 @@ class GetWeather:
         #Slice year, month and day from date
         day = self.date[:10]
 
+        #Extract data from JSON file
         with open("weather.json") as json_file:
-            #Define some variables
+            #Define variables for later use
             hourCounter = 0
             currentRun = 0
             gettedData = []
+            #Load JSON file
             data = json.load(json_file)
             for p in data["list"]:
                 #If date and hour in file is matching with day and hour specified by user append data to array
                 if((p["dt_txt"])[:10] == day and (p["dt_txt"])[11:] == hour[hourAccess[hourCounter]]):
                     currentObject = p
 
+                    #Append matching data into list
                     #What day and hour are given
                     gettedData.append((currentObject["dt_txt"])[:10])
                     gettedData.append((currentObject["dt_txt"])[11:])
@@ -79,6 +98,7 @@ class GetWeather:
             #Return array with all data
             return gettedData
     
+    #Give more human like text to read based on temperature
     def determineTemperatureName(self, temperatureNumber):
         temperatureIndicator = abs(int(temperatureNumber))
         temperature = ["stopni", "stopień", "stopnie", "stopnie", "stopnie", "stopni"]
@@ -94,6 +114,7 @@ class GetWeather:
 
         return temperatureName
             
+    #Give more human like text to read based on hour
     def determineHour(self, date):
         hour = date[0:2]
         if(hour == "06"):
@@ -109,37 +130,46 @@ class GetWeather:
         elif(hour == "21"):
             return "dwudziestej pierwszej"
 
-
+    #Main function to display all informations about weather
     def displayInfo(self):
+        #Write created list into data variable
         data = self.getInfo()
         print(data)
+        #Extract date from beginnig of list
         date = data[0]
+        #Extract day, month and year from date
         day = date[8:]
         month = date[5:7]
         year = date[:4]
-        #print(day + " " + month + " " + year)
+        #Tell date for which weather will be given
         talk.tellSentence("Dnia " + day + " " + month + " " + year)
         for i in range(5):
             for j in range(7):
                 if(((i*6) + j) % 6 == 0):
+                    #Pass all other dates
                     pass
                 else:
                     if(j == 1):
+                        #Inform about hour for which weather is given
                         print(data[(i*6) + j])
                         hour = self.determineHour(data[(i*6) + j])
                         talk.tellSentence(f"O godzinie {hour}")
                     elif(j == 2):
+                        #Inform about temperature in specific hour
                         temp = data[(i*6) + j]
                         temperatureName = self.determineTemperatureName(temp)
                         print(temp)
                         talk.tellSentence(f"Temperatura będzie wynosić {data[(i*6) + j]} {temperatureName}")
                     elif(j == 3):
+                        #Inform about feel temperature in specific hour
                         temp = data[(i*6) + j]
                         temperatureName = self.determineTemperatureName(temp)
                         print(data[(i*6) + j])
                         talk.tellSentence(f"Temperatura odczuwalna będzie wynosić {data[(i*6) + j]} {temperatureName}")
                     elif(j == 4):
+                        #Inform about falls in specific hour
                         print(data[(i*6) + j])
                     elif(j == 5):
+                        #Inform about wind speed in specific hour
                         print(data[(i*6) + j])
-                        talk.tellSentence(f"Wiatr będzie wiał z prędkością {data[(i*6) + j]} kilometrów na godzinę")
+                        talk.tellSentence(f"Wiatr będzie wiał z prdkością {data[(i*6) + j]} kilometrów na godzinę")

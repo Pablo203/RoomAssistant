@@ -4,6 +4,7 @@ import pyjokes
 from googletrans import Translator
 import wikipediaapi
 import talk
+import speech
 
 
 def redAlert():
@@ -21,7 +22,10 @@ def tellJoke():
     talk.tellSentence(result.text)
 
 
-def getWikipediaInfo(subject):
+def getWikipediaInfo():
+    recognition = speech.Recognize()
+    talk.tellSentence("O jakim temacie chcesz usłyszeć?")
+    subject = recognition.recognize()
     wiki = wikipediaapi.Wikipedia('pl')
     page_py = wiki.page(subject)
     if(page_py.summary == ""):
