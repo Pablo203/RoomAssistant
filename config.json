@@ -1,25 +1,19 @@
 {
     "database" : {
-        "host" : "",
-        "user" : "",
-        "password" : "",
-        "databaseName" : ""
+        "host" : "localhost",
+        "user" : "manfred",
+        "password" : "manfred",
+        "databaseName" : "ManfredMemory"
     },
     "calendar" : {
-        "hourToTellEvents" : "HH:MM",
+        "hourToTellEvents" : "17:00",
         "afterHowManyDaysDeleteEvent" : 7
     },
-    "musicCredentials": {
-        "username" : "SPOTIFY USERNAME",
-        "clientID" : "SPOTIFY CLIENT ID",
-        "clientSecretID" : "SPOTIFY CLIENT SECRET ID",
-        "redirectURI" : "REDIRECT URI"
-    },
     "weather" : {
-        "url" : "RAPID API LINK",
-        "city" : "city, country",
-        "rapid-api-host" : "RAPID API HOST",
-        "rapid-api-key" : "RAPID API KEY"
+        "url" : "https://community-open-weather-map.p.rapidapi.com/forecast",
+        "city" : "rybnik,pl",
+        "rapid-api-host" : "community-open-weather-map.p.rapidapi.com",
+        "rapid-api-key" : "eb93f8fd3emsh381900d05a32aecp165355jsnb75ede5ea3c9"
     },
     "language" : {
         "response" : "pl",
