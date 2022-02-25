@@ -4,7 +4,6 @@ import calendars
 import talk
 import speech
 import fun
-import interaction
 
 #Class to control all functions of programm
 class command:

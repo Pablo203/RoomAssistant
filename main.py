@@ -43,11 +43,11 @@ def executeCommand(command):
         toExecute.redAlert()
 
     #Get info from Wikipedia about certain topic
-    elif("Podaj mi informacje" in command):
+    elif("podaj mi informacje" in command):
         toExecute.getInfo()
 
     #Gets and tells some programming joke
-    elif("Opowiedz mi żart" in command):
+    elif("powiedz mi żart" in command):
         toExecute.tellSomeJoke()
 
     #Human interactions functions
