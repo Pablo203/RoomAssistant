@@ -1,9 +1,13 @@
-import commands
 import os
 import speech
 import talk
 import speech_recognition as sr
+#Import modules with actions
 import calendars
+import times
+import weather
+import fun
+
 
 #Start xampp service at run
 os.system("sudo /opt/lampp/./xampp start")
@@ -14,41 +18,41 @@ setup.evokeSelectDelete()
 
 
 def executeCommand(command):
-    #Use class from another module to provide matching actions
-    command = command.lower()
-    toExecute = commands.command()
 
     #Tell current hour
     if("która jest godzina" in command):
-        toExecute.timeTell()
+        times.tellTime()
 
     #Set alarm
     elif("ustaw alarm" in command):
-        toExecute.alarm()
+        times.Alarm().evokeAlarm()
 
     #Display weather for next day
     elif("pogoda" in command):
-        toExecute.tellWeather()
+        weather.GetWeather().displayInfo()
 
     #Add event to calendar
     elif("zapisz w kalendarzu" in command):
-        toExecute.addEvents()
+        calendars.Calendar().addEvents()
 
     #Check Events in calendar
     elif("sprawdź w kalendarzu" in command):
-        toExecute.checkEvents()
+        calendars.Calendar().displayEvents()
         
     #Intruder alert
     elif("czerwony alert" in command):
-        toExecute.redAlert()
+        fun.redAlert()
 
     #Get info from Wikipedia about certain topic
     elif("podaj mi informacje" in command):
-        toExecute.getInfo()
+        fun.getWikipediaInfo()
 
     #Gets and tells some programming joke
     elif("powiedz mi żart" in command):
-        toExecute.tellSomeJoke()
+        fun.tellJoke()
+
+    elif("ustaw minutnik" in command):
+        times.timer()
 
     #Human interactions functions
     #elif("jesteś uroczy" or "jesteś słodki" or "jesteś kochany" in command):
@@ -87,7 +91,7 @@ def awaitCommand():
             pass
 
 #Information for user
-talk.tellSentence("Już wstałem")
+talk.tellSentence("Gotowy do działania")
 
 #Listen for keyword in infinite
 while(True):
