@@ -1,20 +1,11 @@
 ### RoomAssistant
-It's project for #100DaysOfCode challenge
-Goal is to make three main parts. Currently there is one available to download.
-There will be:
-
--Virtual Assistant only
-
--Virtual Assistant with website connected to it
-
--Virtual Assistant with robot schematics
+This whole project was meant to be a project for #100DaysOfCode challenge, but I got attachted to the idea of my own Assistant and kept writing new features. I hope in the end it will be able to be as good as other assistants.
 
 
 **Before download**
 
 -Python3
 
--PhpMyAdmin
 
 
 
