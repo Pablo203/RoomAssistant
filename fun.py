@@ -5,6 +5,7 @@ from googletrans import Translator
 import wikipediaapi
 import talk
 import speech
+import yagmail
 
 
 def redAlert():
@@ -32,3 +33,14 @@ def getWikipediaInfo():
         talk.tellSentence("Nie znalazłem żadnych informacji")
     else:
         talk.tellSentence(page_py.summary)
+
+def sendMail():
+    receiver = "pawelrosa686@gmail.com"
+    body = "You asked me to remind you something. \n I hope you remember what it was cause I don't :P"
+    yag = yagmail.SMTP("manfredAssistant@gmail.com")
+
+    yag.send(
+        to=receiver,
+        subject="Something important, I think",
+        contents=body
+    )
