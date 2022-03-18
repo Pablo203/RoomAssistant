@@ -11,7 +11,7 @@ import speech
 class Calendar:
     def __init__(self):
         #Open config file and get all credentials from it
-        with open("config.json", "r") as configFile:
+        with open("/home/a4ch3r/RoomAssistant/config.json", "r") as configFile:
             data = json.load(configFile)
             #Get hour at which reminder will work
             self.hourToTellEvent = data["calendar"]["hourToTellEvents"]

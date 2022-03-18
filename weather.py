@@ -11,7 +11,7 @@ class GetWeather:
 
     def getJSONFile(self):
         #Gets data from Weather API and saves it in JSON file
-        with open("config.json", "r") as configFile:
+        with open("/home/a4ch3r/RoomAssistant/config.json", "r") as configFile:
             #Gets info about url, city, and API credentials from config file
             data = json.load(configFile)
             url = data["weather"]["url"]
@@ -25,7 +25,7 @@ class GetWeather:
 
             response = requests.request("GET", url, headers=headers, params=querystring)
             #Opens a file or creates if file doesn't exist, writes values to it and closes it
-            saveFile = open("weather.json", "w")
+            saveFile = open("/home/a4ch3r/RoomAssistant/weather.json", "w")
             saveFile.write(response.text)
             saveFile.close()
 
@@ -68,7 +68,7 @@ class GetWeather:
         day = self.date[:10]
 
         #Extract data from JSON file
-        with open("weather.json") as json_file:
+        with open("/home/a4ch3r/RoomAssistant/weather.json") as json_file:
             #Define variables for later use
             hourCounter = 0
             currentRun = 0

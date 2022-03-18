@@ -5,7 +5,7 @@ import sys
 from time import sleep
 import talk
 import speech
-
+import fun
 
 class Alarm:
     def __init__(self):
@@ -60,7 +60,7 @@ class Alarm:
 
     def runAlarm(self):
         #When used plays alarm audio
-        playsound("Audio/alarm_2015.wav")
+        playsound("/home/a4ch3r/RoomAssistant/Audio/alarm_2015.wav")
         print("ALARM GOES OFFFFFFFF \n")
 
 def tellTime():
@@ -73,3 +73,21 @@ def tellTime():
     hours = currentTime.hour
     minutes = currentTime.minute
     talk.tellSentence("Jest " + hour[hours] + minute[minutes])
+
+def timer():
+    talk.tellSentence("Na za ile minut ustawić minutnik?")
+    recognizer = speech.Recognize()
+    recognized = recognizer.recognize()
+
+    try:
+        if(recognized == "jedną"):
+            timerTime = 1
+        else:
+            timerTime = int(recognized)
+        talk.tellSentence("Ustawiłem minutnik")
+        sleep(timerTime * 60)
+        fun.sendMail() 
+        playsound("/home/a4ch3r/RoomAssistant/Audio/alarm_2015.wav")
+
+    except ValueError:
+        talk.tellSentence("Nie zrozumiałem ")

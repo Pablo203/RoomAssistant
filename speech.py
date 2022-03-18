@@ -13,7 +13,7 @@ class Recognize:
         with self.mic as source:
             #self.r.adjust_for_ambient_noise(source, duration = 1)
             #Get language of recognizing from config file
-            with open("config.json", "r") as configFile:
+            with open("/home/a4ch3r/RoomAssistant/config.json", "r") as configFile:
                     data = json.load(configFile)
             #Listen with microphone
             audio = self.r.listen(source, phrase_time_limit=2)
